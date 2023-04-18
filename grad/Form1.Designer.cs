@@ -69,7 +69,7 @@
             button2.TabIndex = 2;
             button2.Text = "Змоделювати лін залежність";
             button2.UseVisualStyleBackColor = true;
-            button2.Click += button2_Click;
+            button2.Click += generate_regression_click;
             // 
             // textBox1
             // 

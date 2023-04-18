@@ -19,8 +19,8 @@ namespace grad
             int N = x.Length;
             Random rnd = new Random();
 
-            double close_a = rnd.Next(0, 10);
-            double close_b = rnd.Next(0, 10);
+            double close_a = rnd.Next(-100, 100);
+            double close_b = rnd.Next(-100, 100);
 
 
 
@@ -44,7 +44,7 @@ namespace grad
                 {
                     sum += Math.Pow((close_a + close_b * x[i] - y[i]), 2);
                 }
-                szd_before = 0.125 * sum;
+                szd_before =sum / N;
 
 
                 sum = 0;
@@ -72,14 +72,14 @@ namespace grad
                 {
                     sum += Math.Pow((close_a + close_b * x[i] - y[i]), 2);
                 }
-                szd_after = 0.125 * sum;
+                szd_after = sum/N;
 
-                if (count % 1000 == 0)
+                if (count % 500 == 0)
                 {
                     richTextBox1.Text += ($"{count}]    a:{close_a}      b:{close_b}  cзд:{szd_after}\n");
                 }
 
-            } while (szd_after <= szd_before && count < 50000 && Math.Abs(szd_after - szd_before) > navch / 100);
+            } while (szd_after <= szd_before && count < 50000 && Math.Abs(szd_after - szd_before) > navch / 1000);
             richTextBox1.Text += ($"{count}]    a:{close_a}      b:{close_b}  cзд:{szd_after}\n");
         }
         double[] NormModelling(double m, double s, int N)
@@ -110,7 +110,7 @@ namespace grad
             }
             return mas;
         }
-        private void button2_Click(object sender, EventArgs e)
+        private void generate_regression_click(object sender, EventArgs e)
         {
             Random R = new Random();
             
